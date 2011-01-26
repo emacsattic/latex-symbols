@@ -1,0 +1,156 @@
+Latex symbols in XEmacs
+-----------------------
+(Version 0.04 of 2001/08/13)
+
+This package provides functions for XEmacs to pop up windows
+containing tables of TeX and LaTeX symbols.  For example, running
+
+  M-x latex-symbol-greek
+
+pops up a window that looks like this:
+
+     * alpha         * nu           * theta
+     * beta          * Omega        * Upsilon
+     * chi           * omega        * upsilon
+     * Delta         * Phi          * varepsilon
+     * delta         * phi          * varkappa
+     * epsilon       * Pi           * varphi
+     * eta           * pi           * varpi
+     * Gamma         * Psi          * varrho
+     * gamma         * psi          * varsigma
+     * iota          * rho          * vartheta
+     * kappa         * Sigma        * Xi
+     * Lambda        * sigma        * xi
+     * lambda        * tau          * zeta
+     * mu            * Theta         
+
+except instead of the asterisks, there will be a little picture of
+each Greek letter.
+
+There is a somewhat related package called `x-symbol' available for
+XEmacs--see
+
+  http://www.fmi.uni-passau.de/~wedler/x-symbol/
+
+The x-symbol package does similar things to latex-symbol, and more of
+them.  For example, when editing TeX documents, it can replace the
+string "\alpha" with an alpha, making it sort of WYSIWYG.  The
+latex-symbol package does only one thing: draw tables of symbols.  (I
+mainly wrote it because I had the xpm files around, so it was pretty
+easy.)
+
+************************
+
+Requirements: XEmacs with xpm support.  (Put your cursor after the
+closing parenthesis here:
+
+  (featurep 'xpm)
+
+hit C-x C-e, and look in the minibuffer to see if it says t or nil.  t
+means you have xpm support.  If you'd rather use pictures in some
+other format (which your build of XEmacs supports), then you'll have
+to convert the xpm files to the desired format, using tools from
+netpbm or some other package.  (For example, running
+
+  xpmtoppm blah.xpm | ppmtogif > blah.gif
+
+will convert blah.xpm to blah.gif.)
+
+The latex-symbols package doesn't work with GNU Emacs.
+
+************************
+
+Installation:
+
+1. Unpack the xpm archive: in other words, in some appropriate
+directory, type 
+
+  tar xfz xpm.tar.gz
+
+Or if you don't have the GNU version of tar, run
+
+  gunzip xpm.tar.gz
+  tar xf xpm.tar
+
+This will create a directory called "xpm" containing gazillions of
+xpm files.
+
+2. Make sure the file latex-symbols.el is in your load-path.  If you
+want to, you could byte-compile it: while running XEmacs, do:
+
+  M-x byte-compile-file latex-symbols.el
+
+3. You have two choices: either do this every time you want to use one 
+of the latex-symbol commands:
+
+  M-x load-library latex-symbols
+
+or put this line in your .emacs file:
+
+  (load-library "latex-symbols")
+
+or put these lines in your .emacs file:
+
+  (autoload 'latex-symbol-greek "latex-symbols" nil t)
+  (autoload 'latex-symbol-operators "latex-symbols" nil t)
+  (autoload 'latex-symbol-relations "latex-symbols" nil t)
+  (autoload 'latex-symbol-arrows "latex-symbols" nil t)
+  (autoload 'latex-symbol-miscellany "latex-symbols" nil t)
+  (autoload 'latex-symbol-all "latex-symbols" nil t)
+  (autoload 'latex-symbol-plain "latex-symbols" nil t)
+  (autoload 'latex-symbol-latexsym "latex-symbols" nil t)
+  (autoload 'latex-symbol-amsfonts "latex-symbols" nil t)
+  (autoload 'latex-symbol-amsmath "latex-symbols" nil t)
+  (autoload 'latex-symbol-amssymb "latex-symbols" nil t)
+  (autoload 'latex-symbol-amsthm "latex-symbols" nil t)
+  (autoload 'latex-symbol-stmaryrd "latex-symbols" nil t)
+
+4. Customize the following variables, in the customization group
+latex-symbols:
+
+   latex-symbol-picture-type    Set to xpm (or gif or whatever format
+                                  you want to use).
+   latex-symbol-directory       Set to directory which has "xpm" (or
+                                  the name of your format) as a 
+                                  subdirectory.
+
+5. Run any of the following commands:
+
+   M-x latex-symbol-greek         display table of Greek letters
+   M-x latex-symbol-operators     display table of binary operators
+   M-x latex-symbol-relations     display table of binary operators
+   M-x latex-symbol-arrows        display table of arrows
+   M-x latex-symbol-miscellany    display table of miscellaneous symbols 
+   M-x latex-symbol-all           display table of "all" symbols
+   M-x latex-symbol-plain         display symbols defined in plain (La)TeX
+   M-x latex-symbol-latexsym      display symbols defined in latexsym.sty
+   M-x latex-symbol-amsfonts      display symbols defined in amsfonts.sty
+   M-x latex-symbol-amsmath       display symbols defined in amsmath.sty
+   M-x latex-symbol-amssymb       display symbols defined in amssymb.sty
+   M-x latex-symbol-amsthm        display symbols defined in amsthm.sty
+   M-x latex-symbol-stmaryrd      display symbols defined in stmaryrd.sty
+
+("all" means all the symbols that the package knows about.  Let me
+know when you find ones I should add.)
+
+6. If you want to add your own symbols, then create xpm files with the
+appropriate names, put them into the xpm directory, and define the
+variable ls-other to be a list of those names, as in
+
+  (setq ls-other '("new-sym1" "new-sym2" "new-sym3"))
+
+Then running
+
+  M-x latex-symbol-other
+
+will display a table of those symbols.  Alternatively, you can modify
+the variables ls-greek, ls-rels, ls-ops, ls-arrows, and
+ls-misc.
+
+
+************************
+
+Suggestions or comments?  Contact me:
+  John Palmieri
+  e-mail: palmieri@member.ams.org
+  URL:    http://www.math.washington.edu/~palmieri/

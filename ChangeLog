@@ -1,0 +1,34 @@
+2001-08-13  John H. Palmieri  <palmieri@math.washington.edu>
+
+	* all: released version 0.04.
+	
+	* latex-symbols.el (ls-display-picture, ls-display-symbols): use
+	extents instead of annotations.
+
+1999-06-29  John Palmieri  <"John H. Palmieri" <palmieri@math.washington.edu>>
+
+	* all: released version 0.03.
+
+	* all: changed my e-mail address, URL.
+
+1999-05-11  John H Palmieri  <"John H. Palmieri" <palmieri@member.ams.org>>
+
+	* all: released version 0.02.
+
+	* latex-symbols.el (ls-plain, ls-latexsym, ls-amsfonts,
+	ls-amsmath, ls-amssymb, ls-amsthm, ls-stmaryrd): New variables,
+	containing lists of symbols defined in different packages.
+
+	* latex-symbols.el (latex-symbol-plain, -latexsym, etc.): New
+	functions--display tables of symbols for each .sty file.
+
+	* latex-symbols.el (ls-lookup-symbol): New function--say in which
+	package any given symbol is defined.
+
+	* latex-symbols.el (ls-rels): fixed typos: nsupseteq instead of
+	nsupsetq, nsupseteqq instead of nsupsetqq.
+	
+1999-04-28  John H Palmieri  <"John H. Palmieri" <palmieri@member.ams.org>>
+
+	* all: released version 0.1.
+
